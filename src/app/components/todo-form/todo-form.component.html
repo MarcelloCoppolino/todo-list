@@ -1,11 +1,12 @@
-<form action="">
-    <input type="text" id="title">
-    <input type="text" id="description">
-    <input type="date" id="due-date">
-    <select name="category" id="category">
+<form #todoform="ngForm" (ngSubmit)="onSubmit()">
+
+    <input name="title" [(ngModel)] = "title" type="text" id="title">
+    <input name="description"  [(ngModel)] = "description" type="text" id="description">
+    <input name="dueDate"  [(ngModel)] = "dueDate" type="date" id="due-date">
+    <select name="categoryId"  [(ngModel)] = "categoryId" id="category">
         <option value="1">studio</option>
         <option value="2">lavoro</option>
         <option value="3">divertimento</option>
     </select>
-    <button (click)="onAdd()">Aggiungi alla To Do List</button>
+    <button type="submit">Aggiungi alla To Do List</button>
 </form>
