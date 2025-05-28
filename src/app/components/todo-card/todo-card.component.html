@@ -6,5 +6,7 @@
     <p>due date: {{ todo.dueDate }}</p>
     <p>completed: {{ todo.status }}</p>
     <p>category: {{ todo.categoryId }}</p>
+    <p>completedAt : {{todo.completedAt}}</p>
     <button (click) = "onDelete()"> Delete To Do </button>
+    <button (click) = "onComplete()">{{todo.status ? "Complete To Do":"Uncomplete To Do"}}</button>
 </div>

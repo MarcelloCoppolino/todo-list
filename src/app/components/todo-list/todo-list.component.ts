@@ -28,7 +28,14 @@ export class TodoListComponent implements OnInit {
     } else {
       alert("Non eliminato")
     }
+  }
 
+  handleComplete(obj: {id : number }){
+    const wasCompleted = this._todoService.completeTodo(obj.id)
+     const todo = this.list.find((t) => t.id == obj.id);
+        if (todo != null) {
+            todo.completedAt = todo.status ? new Date().toISOString().split("T")[0] : null;    
+        }
   }
 
 

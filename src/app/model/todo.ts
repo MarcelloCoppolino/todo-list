@@ -5,5 +5,6 @@ export interface Todo{
     createdAt: string;  
     dueDate: string; 
     status: boolean; 
-    categoryId: number; //forse category
+    categoryId: number;
+    completedAt : string | null; //forse category
 }

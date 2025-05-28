@@ -10,8 +10,12 @@ import { Todo } from '../../model/todo';
 export class TodoCardComponent {
   @Input('todo') todo!: Todo; 
   @Output("deleteTodo") deleteTodo = new EventEmitter<{id:number}>();
+  @Output("completeTodo") completeTodo = new EventEmitter<{id:number}>(); 
 
   onDelete(){
     this.deleteTodo.emit({id : this.todo.id});
+  }
+  onComplete(){
+    this.completeTodo.emit({id : this.todo.id})
   }
 }

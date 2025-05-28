@@ -8,31 +8,34 @@ import { Todo } from "../model/todo";
 export class TodoService {
     list: Todo[] = [
         {
-            id: 1, 
+            id: 1,
             title: 'Stefano',
-            description: 'cuoco/programmatore',
+            description: 'scem',
             createdAt: '2025-05-28',
             dueDate: '2025-05-28',
-            status: true,
-            categoryId: 1
+            status: false,
+            categoryId: 1,
+            completedAt: null,
         },
         {
-            id: 2, 
+            id: 2,
             title: 'Edoardo',
             description: 'playerpokemon',
             createdAt: '2025-05-28',
             dueDate: '2025-05-28',
-            status: true,
-            categoryId: 2
+            status: false,
+            categoryId: 2,
+            completedAt: null,
         },
         {
-            id: 3, 
+            id: 3,
             title: 'Marcello',
             description: 'barbone',
             createdAt: '2025-05-28',
             dueDate: '2025-05-28',
-            status: true,
-            categoryId: 3
+            status: false,
+            categoryId: 3,
+            completedAt: null,
         }
     ];
     // constructor() {
@@ -44,12 +47,22 @@ export class TodoService {
         return this.list;
     }
 
-    deleteTodo(id:number):boolean{
+    deleteTodo(id: number): boolean {
         const beforeLength = this.list.length;
         this.list = this.list.filter((t) => t.id != id)
         // localStorage.setItem("todos", JSON.stringify(this.list));
         return beforeLength != this.list.length;
-        
+
+    }
+
+    completeTodo(id: number): boolean {
+        const todo = this.list.find((t) => t.id == id);
+        if (todo != null) {
+            todo.status = !todo.status;
+            todo.completedAt = todo.status ? new Date().toISOString().split("T")[0] : null;
+            return true;
+        }
+        return false;
     }
 
     addTodo(obj: { title: string, description: string, dueDate: string, categoryId: number }): Todo {
@@ -60,7 +73,8 @@ export class TodoService {
             createdAt: new Date().toISOString().split("T")[0],
             dueDate: obj.dueDate,
             status: false,
-            categoryId: obj.categoryId
+            categoryId: obj.categoryId,
+            completedAt: null
         };
         this.list.push(newTodo);
         localStorage.setItem("todos", JSON.stringify(this.list));
