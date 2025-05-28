@@ -23,6 +23,7 @@ export class TodoListComponent implements OnInit {
   handleDelete(obj: { id: number }) {
     const wasDelete = this._todoService.deleteTodo(obj.id);
     if (wasDelete) {
+      this.list = this.list.filter(t => t.id != obj.id)
       alert("ToDo eliminato")
     } else {
       alert("Non eliminato")

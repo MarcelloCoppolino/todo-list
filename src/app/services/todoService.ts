@@ -6,10 +6,38 @@ import { Todo } from "../model/todo";
 })
 
 export class TodoService {
-    list: Todo[] = [];
-    constructor() {
-        this.loadTodo();
-    }
+    list: Todo[] = [
+        {
+            id: 1, 
+            title: 'Stefano',
+            description: 'cuoco/programmatore',
+            createdAt: '2025-05-28',
+            dueDate: '2025-05-28',
+            status: true,
+            categoryId: 1
+        },
+        {
+            id: 2, 
+            title: 'Edoardo',
+            description: 'playerpokemon',
+            createdAt: '2025-05-28',
+            dueDate: '2025-05-28',
+            status: true,
+            categoryId: 2
+        },
+        {
+            id: 3, 
+            title: 'Marcello',
+            description: 'barbone',
+            createdAt: '2025-05-28',
+            dueDate: '2025-05-28',
+            status: true,
+            categoryId: 3
+        }
+    ];
+    // constructor() {
+    //     this.loadTodo();
+    // }
 
 
     getTodos(): Todo[] {
@@ -18,8 +46,8 @@ export class TodoService {
 
     deleteTodo(id:number):boolean{
         const beforeLength = this.list.length;
-        this.list = this.list.filter((s) => s.id != id)
-        localStorage.setItem("todos", JSON.stringify(this.list));
+        this.list = this.list.filter((t) => t.id != id)
+        // localStorage.setItem("todos", JSON.stringify(this.list));
         return beforeLength != this.list.length;
         
     }
