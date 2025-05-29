@@ -1,5 +1,4 @@
-<app-todo-form (addTodo)="handleAdd($event)"> </app-todo-form>
 
 @for(t of list; track t.id){
-    <app-todo-card [todo]= 't' (deleteTodo)="handleDelete($event)"  (completeTodo)="handleComplete($event)"></app-todo-card>
+    <app-todo-card [todo]= 't' (deleteTodo)="handleDelete($event)" (toggleComplete)="handleComplete($event)"></app-todo-card>
 }
