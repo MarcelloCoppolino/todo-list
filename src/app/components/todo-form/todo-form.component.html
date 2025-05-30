@@ -1,22 +1,36 @@
 <form #todoform="ngForm" (ngSubmit)="onSubmit(todoform)">
     <div>
-        <input name="title" [(ngModel)]="todo.title" type="text" id="title">
+        <input name="title" #title="ngModel" [(ngModel)]="todo.title" type="text" id="title" required>
+        @if(title.invalid && title.touched){
+            <p>Inserisci il titolo</p>
+        }
     </div>
 
     <div>
-        <input name="description" [(ngModel)]="todo.description" type="text" id="description">
+        <input name="description" #description="ngModel" [(ngModel)]="todo.description" type="text" id="description" required>
+        @if(description.invalid && description.touched){
+            <p>Inserisci la descrizione</p>
+        }
     </div>
 
     <div>
-        <input name="dueDate" [(ngModel)]="todo.dueDate" type="date" id="due-date">
+        <input name="dueDate" #dueDate="ngModel" [(ngModel)]="todo.dueDate" type="date" id="due-date" required [attr.min]="today">
+        @if(dueDate.errors?.["required"] && dueDate.touched){
+            <p>Inserisci la data valida</p>
+        }
     </div>
 
     <div>
-        <select name="categoryId" [(ngModel)]="todo.categoryId" id="category">
+        <select name="categoryId" #categoryId="ngModel" [(ngModel)]="todo.categoryId" id="category" required>
             <option value="1">studio</option>
             <option value="2">lavoro</option>
             <option value="3">divertimento</option>
         </select>
+        <div>
+            @if(categoryId.invalid && categoryId.touched){
+            <p>Inserisci la categoria, coglione</p>
+            }
+        </div>
     </div>
-    <button type="submit">Aggiungi alla To Do List</button>
+    <button type="submit" [disabled]="todoform.invalid">Aggiungi alla To Do List</button>
 </form>
