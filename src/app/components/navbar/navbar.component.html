@@ -1,6 +1,19 @@
 <nav>
     <ul>
+        <li><a routerLink="home"> HOME </a></li>
         <li><a routerLink="todo-list"> To Do List</a></li>
-        <li> <a routerLink="todo-form"> Add New To Do </a></li>
+        <li> <a routerLink="todo-form"> Add New To Do (template)</a></li>
+        <li><a routerLink="todo-form-reactive"> Add New To Do (reactive)</a></li>
     </ul>
 </nav>
+ 
+@if(user != null){
+    <div class="user-info">
+        <p>
+            <strong>Account : </strong> {{user.userName}}
+        </p>
+    </div>
+    <div class="user-info">
+        <strong>Ecco a voi i vostri To Do List da completare</strong>
+    </div>
+}

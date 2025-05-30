@@ -1,0 +1,40 @@
+<form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <div>
+        <input formControlName="title"  type="text" id="title">
+        @if(title?.invalid && title?.touched){
+        <p>Inserisci il titolo</p>
+        }
+    </div>
+
+    <div>
+        <input formControlName="description" type="text" id="description">
+        @if(description?.invalid && description?.touched){
+        <p>Inserisci la descrizione</p>
+        }
+    </div>
+
+    <div>
+        <input formControlName="dueDate" type="date" id="due-date" >
+        @if(dueDate?.hasError("dateInPast") && dueDate?.touched){
+        <p>Inserisci una data maggiore di quella odierna</p>
+        }
+        @if(dueDate?.hasError("required") && dueDate?.touched){
+        <p>Inserisci obbligatoriamente una data valida</p>
+        }
+    </div>
+
+    <div>
+        <select formControlName="categoryId" id="category">
+            <option value="" selected>-- Scegli categoria --</option>
+            <option value="1">studio</option>
+            <option value="2">lavoro</option>
+            <option value="3">divertimento</option>
+        </select>
+        <div>
+            @if(categoryId?.invalid && categoryId?.touched){
+            <p>Inserisci la categoria </p>
+            }
+        </div>
+    </div>
+    <button type="submit" [disabled]="todoForm.invalid">Aggiungi alla To Do List</button>
+</form>

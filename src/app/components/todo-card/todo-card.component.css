@@ -1,0 +1,79 @@
+/* Contenitore principale della scheda To Do */
+.todo-detail {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #e4e2f6;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #333;
+}
+
+/* Titolo ID */
+.todo-detail h2 {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  color: #2c3e50;
+}
+
+/* Paragrafi di dettaglio */
+.todo-detail p {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+/* Evidenziare lo stato completato */
+.todo-detail p:nth-child(6) {
+  font-weight: 600;
+  color: #16a085;
+}
+
+/* Paragrafo completedAt in italico più leggero */
+.todo-detail p[ng-reflect-ng-if] {
+  font-style: italic;
+  color: #888;
+}
+
+/* Pulsanti azione */
+.todo-detail button {
+  margin: 0.75rem 0.5rem 0 0;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+/* Delete */
+.todo-detail button:first-of-type {
+  background: #e74c3c;
+  color: #fff;
+}
+.todo-detail button:first-of-type:hover {
+  background: #c0392b;
+}
+
+/* Toggle Complete */
+.todo-detail button:nth-of-type(2) {
+  background: #0099ff;
+  color: #fff;
+}
+.todo-detail button:nth-of-type(2):hover {
+  background: #2980b9;
+}
+
+/* Update */
+.todo-detail button:nth-of-type(3) {
+  background: #efda86;
+  color: #2c3e50;
+}
+.todo-detail button:nth-of-type(3):hover {
+  background: #d4ac0d;
+}
+
+/* Effetto clic */
+.todo-detail button:active {
+  transform: translateY(1px);
+}

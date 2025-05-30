@@ -1,0 +1,25 @@
+<form [formGroup]="logInForm" (ngSubmit)="logIn()" noValidate>
+    <div>
+        <label for="userName"><strong>Username: </strong></label>
+        <input type="text" formControlName="userName" id="userName" aria-placeholder="Username">
+        <div>
+            @if(userName?.invalid && userName?.touched){
+            <i>Inserisci il tuo USERNAME</i>
+            }
+        </div>
+    </div>
+
+    <div>
+        <label for="password"><strong>Password: </strong></label>
+        <input type="password" formControlName="password" id="password" aria-placeholder="Password">
+        <div>
+            @if(password?.invalid && password?.touched){
+            <i>Inserisci la PASSWORD</i>
+            }
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="logInForm.invalid"> Login In </button>
+
+</form>
+<button (click)="logOut()"> Log Out</button>
